@@ -1,0 +1,14 @@
+steps:
+# Build the container for md
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/md', '.']
+  dir: 'src'
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/md']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/apigee-product-demo/cloud-sdk:1.0.0'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'md', '--image', 'gcr.io/$PROJECT_ID/md', '--region', '$_REGION','--vpc-connector','vpc-connector','--vpc-egress','private-ranges-only','--update-env-vars','mongohost=10.132.0.2,mongoport=27017,MONGO_USERNAME=appuser,MONGO_PASSWORD=apppwd,BUCKET=$_BUCKET']
+images:
+- gcr.io/$PROJECT_ID/md
