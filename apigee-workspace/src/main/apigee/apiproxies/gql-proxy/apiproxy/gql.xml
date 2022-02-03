@@ -1,0 +1,26 @@
+<APIProxy revision="14" name="gql">
+    <DisplayName>products</DisplayName>
+    <Description></Description>
+    <CreatedAt>1643715197971</CreatedAt>
+    <LastModifiedAt>1643715197971</LastModifiedAt>
+    <BasePaths>/gql</BasePaths>
+    <Policies>
+        <Policy>AddCors</Policy>
+        <Policy>GraphQL</Policy>
+        <Policy>VerifyAPIKey</Policy>
+        <Policy>extract-graphql-query</Policy>
+        <Policy>modify-request</Policy>
+        <Policy>remodify-request</Policy>
+        <Policy>UpdateQuery</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>graphql://schema.graphql</Resource>
+        <Resource>jsc://UpdateQuery.js</Resource>
+    </Resources>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
