@@ -1,6 +1,10 @@
 # snitsig-pingvin
 Parent repo for all submodules: org, mongodb, microservices, graphql, apigee, and org
 
+The vast majority of these repos contain an associated `cloudbuild.yaml`. What I've done
+is to create triggers for each of these (and in the case of masterdata for both `main` and 
+`develop` branches) so that we can show a complete CI/CD enabled SDLC.
+
 ## mongodb
 There is a repo to spin up a mongodb instance that the shopping services rely on for their
 data persistence. This is really the first one that should be configured
