@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC.fetchPrices">
+    <DisplayName>SC.fetchPrices</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>priceResponse</Response>
+    <HTTPTargetConnection>
+        <Authentication>
+            <GoogleIDToken>
+                <Audience>https://price-hbjrsnqtmq-ew.a.run.app</Audience>
+                <IncludeEmail>true</IncludeEmail>
+            </GoogleIDToken>
+          </Authentication>
+        <Properties/>
+        <URL>https://price-hbjrsnqtmq-ew.a.run.app/price</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

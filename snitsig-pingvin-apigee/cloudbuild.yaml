@@ -1,0 +1,16 @@
+# This configuration file is used to build an Apigee API Proxy
+#
+steps:
+- id: 'Use apigeecli to deploy apigee artifacts to the control plane'
+  name: gcr.io/apigee-product-demo/cloud-sdk:1.0.0
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    gcloud auth print-access-token > /tmp/token
+    #
+    ## Do the apigeecli work now
+    #
+    /tmp/apigeecli prefs set -s=false -o $PROJECT_ID
+    /tmp/apigeecli apis create -n $_SERVICE -p apigee-workspace/src/main/apigee/apiproxies/catalog-proxy/apiproxy -t $(cat /tmp/token) | awk -F '"' '$2 ~ "revision"{print $4}' > /tmp/revision
+    /tmp/apigeecli apis deploy -v $(cat /tmp/revision) -r -n $_SERVICE -t $(cat /tmp/token)  -e $_ENV -s $_GSA@$PROJECT_ID.iam.gserviceaccount.com
