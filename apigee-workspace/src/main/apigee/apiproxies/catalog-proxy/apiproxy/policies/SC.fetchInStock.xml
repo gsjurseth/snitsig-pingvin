@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC.fetchInStock">
+    <DisplayName>SC.fetchInStock</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+        <Set>
+            <Path>/</Path>
+        </Set>
+    </Request>
+    <Response>warehouseResponse</Response>
+    <HTTPTargetConnection>
+        <Authentication>
+            <GoogleIDToken>
+                <Audience>https://wh-hbjrsnqtmq-ew.a.run.app</Audience>
+                <IncludeEmail>true</IncludeEmail>
+            </GoogleIDToken>
+          </Authentication>
+        <Properties/>
+        <URL>https://wh-hbjrsnqtmq-ew.a.run.app/warehouse</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>
